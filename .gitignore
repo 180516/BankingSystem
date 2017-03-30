@@ -99,7 +99,9 @@ crashlytics-build.properties
 fabric.properties
 
 target/
-!.mvn/wrapper/maven-wrapper.jar
+*.mvn/wrapper/maven-wrapper.jar
+*/mvnw
+*/mvnw.cmd
 
 ### STS ###
 .apt_generated
