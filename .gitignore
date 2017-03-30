@@ -1,6 +1,6 @@
 *.class
 
-*/bankingsystem/application.properties
+bankingsystem/application.properties
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
