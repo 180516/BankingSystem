@@ -1,6 +1,7 @@
 package pl.banking.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by dpp on 4/1/17.
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity(name = "client")
 @Table(name="CLIENTS")
 @SequenceGenerator(name = "client_gen", sequenceName = "client_gen", allocationSize = 1)
-public class ClientEntity {
+public class ClientEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
