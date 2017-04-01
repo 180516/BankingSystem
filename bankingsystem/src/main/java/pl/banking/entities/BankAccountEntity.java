@@ -1,4 +1,4 @@
-package pl.banking.entities.ror;
+package pl.banking.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 
 @Entity (name = "bank_account")
-@Table (name="BANK_ACCOUNT")
+@Table (name="BANK_ACCOUNTS")
 @SequenceGenerator (name = "bank_account_gen", sequenceName = "bank_account_gen", allocationSize = 1)
 public class BankAccountEntity implements Serializable {
 
