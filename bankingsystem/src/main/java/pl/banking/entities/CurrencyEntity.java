@@ -24,6 +24,9 @@ public class CurrencyEntity {
     @Column (name = "currencyType", nullable = false, insertable = false, updatable = false)
     private Currency currencyType;
 
+    @OneToOne (mappedBy = "currency")
+    @PrimaryKeyJoinColumn
+    private BankAccountEntity bankAccountEntity;
 
     public CurrencyEntity() {
     }

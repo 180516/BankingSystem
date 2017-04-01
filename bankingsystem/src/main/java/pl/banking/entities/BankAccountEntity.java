@@ -61,6 +61,11 @@ public class BankAccountEntity implements Serializable {
     @Column (name = "credit")
     private BigDecimal accountCreadit;
 
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private CurrencyEntity currency;
+
+
     public BankAccountEntity() {
 
     }
@@ -135,5 +140,9 @@ public class BankAccountEntity implements Serializable {
 
     public void setAccountCreadit(BigDecimal accountCreadit) {
         this.accountCreadit = accountCreadit;
+    }
+
+    public CurrencyEntity getCurrency() {
+        return currency;
     }
 }
