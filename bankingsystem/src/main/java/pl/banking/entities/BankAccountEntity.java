@@ -32,11 +32,9 @@ public class BankAccountEntity implements Serializable {
     @Column (name = "open_date")
     private LocalDateTime openDate;
 
-    @NotNull
     @Column (name = "close_date")
     private LocalDateTime closeDate;
 
-    @NotNull
     @Column (name = "suspend_date")
     private LocalDateTime suspendDate;
 
@@ -48,6 +46,7 @@ public class BankAccountEntity implements Serializable {
     @Column (name = "percentage")
     private BigDecimal accountPercentage;
 
+    @NotNull
     @Digits (integer = 30, fraction = 0)
     @Column (name = "account_number")
     private BigInteger accountNumber;
