@@ -48,7 +48,7 @@ public class BankAccountEntity implements Serializable {
 
     @NotNull
     @Digits (integer = 30, fraction = 0)
-    @Column (name = "account_number")
+    @Column (name = "account_number", updatable = false)
     private BigInteger accountNumber;
 
     @Digits (integer = 24, fraction = 2)
@@ -140,6 +140,8 @@ public class BankAccountEntity implements Serializable {
     public void setAccountCreadit(BigDecimal accountCreadit) {
         this.accountCreadit = accountCreadit;
     }
+
+
 
     public CurrencyEntity getCurrency() {
         return currency;

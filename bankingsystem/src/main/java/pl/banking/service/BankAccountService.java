@@ -9,6 +9,9 @@ import pl.banking.entities.BankAccountEntity;
 import pl.banking.repositories.BankAccountRepository;
 import pl.banking.service.wrappers.BankAccountWrapper;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 /**
  * Created by dpp on 4/10/17.
  */
@@ -22,10 +25,25 @@ public class BankAccountService {
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
-    public boolean openBankAccount (BankAccountWrapper bankAccountWrapper) {
+    public void openBankAccount (BankAccountWrapper bankAccountWrapper) {
         BankAccountEntity bankAccountEntity = new BankAccountEntity();
 
-        return true;
+    }
+
+    public void editBankAccountDeatils (BankAccountWrapper bankAccountWrapper, BigInteger accountNumber) {
+
+    }
+
+    public void suspendBankAccount (BigInteger accountNumber) {
+
+    }
+
+    public void deleteBankAccount (BigInteger accountNumber) {
+
+    }
+
+    public void changeBalance (BigInteger accountNumber, BigDecimal amount) {
+
     }
 
 }
