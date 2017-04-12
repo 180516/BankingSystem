@@ -1,6 +1,7 @@
 package pl.banking.factories;
 
 
+import java.util.Random;
 import java.util.function.Function;
 
 /**
@@ -9,5 +10,8 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface Factory<T> extends Function<Context, T> {
 
+    static <T> Factory <T> withRandom (Function<Random, T> factory) {
+        return env -> factory.apply(env.getRandom());
+    }
 
 }

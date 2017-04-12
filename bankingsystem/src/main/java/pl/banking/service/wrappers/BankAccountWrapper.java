@@ -2,7 +2,6 @@ package pl.banking.service.wrappers;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.banking.entities.BankAccountEntity;
-import pl.banking.entities.CurrencyEntity;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -36,8 +35,15 @@ public class BankAccountWrapper {
 
     private BigDecimal accountCapitalization;
 
-    private BigDecimal accountCreadit;
+    private BigDecimal accountCredit;
 
-    private CurrencyEntity currency;
+    public void applyToEntity (BankAccountEntity bankAccountEntity) {
+        bankAccountEntity.setOpenDate(openDate);
+        bankAccountEntity.setAccountBalance(accountBalance);
+        bankAccountEntity.setAccountPercentage(accountPercentage);
+        bankAccountEntity.setAccountNumber(accountNumber);
+        bankAccountEntity.setAccountCapitalization(accountCapitalization);
+        bankAccountEntity.setAccountCredit(accountCredit);
+    }
 
 }

@@ -48,17 +48,24 @@ public class BankAccountEntity implements Serializable {
 
     @NotNull
     @Digits (integer = 30, fraction = 0)
-    @Column (name = "account_number")
+    @Column (name = "account_number", updatable = false)
     private BigInteger accountNumber;
 
     @Digits (integer = 24, fraction = 2)
     @Column (name = "capitalization")
     private BigDecimal accountCapitalization;
 
+    @Digits (integer = 24, fraction = 2)
+    @Column (name = "account_credit")
+    private BigDecimal creditSide;
+
+    @Digits (integer = 24, fraction = 2)
+    @Column (name = "account_debit")
+    private BigDecimal debitSide;
 
     @Digits (integer = 24, fraction = 2)
     @Column (name = "credit")
-    private BigDecimal accountCreadit;
+    private BigDecimal accountCredit;
 
     @OneToOne
     @PrimaryKeyJoinColumn
@@ -133,12 +140,28 @@ public class BankAccountEntity implements Serializable {
         this.accountCapitalization = accountCapitalization;
     }
 
-    public BigDecimal getAccountCreadit() {
-        return accountCreadit;
+    public BigDecimal getCreditSide() {
+        return creditSide;
     }
 
-    public void setAccountCreadit(BigDecimal accountCreadit) {
-        this.accountCreadit = accountCreadit;
+    public void setCreditSide(BigDecimal creditSide) {
+        this.creditSide = creditSide;
+    }
+
+    public BigDecimal getDebitSide() {
+        return debitSide;
+    }
+
+    public void setDebitSide(BigDecimal debitSide) {
+        this.debitSide = debitSide;
+    }
+
+    public BigDecimal getAccountCredit() {
+        return accountCredit;
+    }
+
+    public void setAccountCredit(BigDecimal accountCreadit) {
+        this.accountCredit = accountCreadit;
     }
 
     public CurrencyEntity getCurrency() {
