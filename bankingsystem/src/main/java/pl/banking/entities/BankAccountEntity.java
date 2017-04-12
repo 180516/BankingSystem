@@ -56,11 +56,11 @@ public class BankAccountEntity implements Serializable {
     private BigDecimal accountCapitalization;
 
     @Digits (integer = 24, fraction = 2)
-    @Column (name = "capitalization")
+    @Column (name = "account_credit")
     private BigDecimal creditSide;
 
     @Digits (integer = 24, fraction = 2)
-    @Column (name = "capitalization")
+    @Column (name = "account_debit")
     private BigDecimal debitSide;
 
     @Digits (integer = 24, fraction = 2)
