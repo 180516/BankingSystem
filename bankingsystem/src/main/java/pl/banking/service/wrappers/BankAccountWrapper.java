@@ -39,13 +39,11 @@ public class BankAccountWrapper {
 
     public void applyToEntity (BankAccountEntity bankAccountEntity) {
         bankAccountEntity.setOpenDate(openDate);
-        bankAccountEntity.setCloseDate(closeDate);
-        bankAccountEntity.setSuspendDate(suspendDate);
         bankAccountEntity.setAccountBalance(accountBalance);
         bankAccountEntity.setAccountPercentage(accountPercentage);
         bankAccountEntity.setAccountNumber(accountNumber);
         bankAccountEntity.setAccountCapitalization(accountCapitalization);
-        bankAccountEntity.setAccountCreadit(accountCredit);
+        bankAccountEntity.setAccountCredit(accountCredit);
     }
 
 }
