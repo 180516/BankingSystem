@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.banking.entities.BankAccountEntity;
+import pl.banking.exceptions.BankAccountNotFoundException;
 import pl.banking.repositories.BankAccountRepository;
-import pl.banking.service.wrappers.BankAccountWrapper;
+import pl.banking.service.wrappers.BankAccountDto;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -27,12 +28,12 @@ public class BankAccountService {
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
-    public void openBankAccount (BankAccountWrapper bankAccountWrapper) {
+    public void openBankAccount (BankAccountDto bankAccountWrapper) {
         BankAccountEntity bankAccountEntity = new BankAccountEntity();
 
     }
 
-    public void editBankAccountDeatils (BankAccountWrapper bankAccountWrapper, BigInteger accountNumber) {
+    public void editBankAccountDeatils (BankAccountDto bankAccountWrapper, BigInteger accountNumber) {
         Optional<BankAccountEntity> bankAccountEntity = bankAccountRepository.findByAccountNumber(accountNumber);
         if (bankAccountEntity.isPresent()) {
         } else {
@@ -58,7 +59,7 @@ public class BankAccountService {
         }
     }
 
-    public void changeBalance (BigInteger accountNumber, BigDecimal amount) {
+    public void changeBalance (BigInteger accountNumber, BigDecimal amount) throws BankAccountNotFoundException{
         Optional<BankAccountEntity> bankAccountEntity = bankAccountRepository.findByAccountNumber(accountNumber);
         if (bankAccountEntity.isPresent()) {
 
@@ -68,7 +69,23 @@ public class BankAccountService {
 
             bankAccountEntity.get().setAccountBalance(amount);
         } else {
-            //TODO throw new exception
+            throw new BankAccountNotFoundException("Bank Account with number: " + accountNumber.toString() + " not found in database");
+        }
+    }
+
+    public void changeAccountsCreditAndDebitSides (BigInteger debitAccountNumber, BigInteger creditAccountNumber, BigDecimal amount) throws BankAccountNotFoundException{
+        Optional <BankAccountEntity> debitAccount = bankAccountRepository.findByAccountNumber(debitAccountNumber);
+        Optional <BankAccountEntity> creditAccount = bankAccountRepository.findByAccountNumber(creditAccountNumber);
+
+        if (debitAccount.isPresent() && creditAccount.isPresent()) {
+            debitAccount.get().setDebitSide(debitAccount.get().getDebitSide().add(amount));
+            creditAccount.get().setCreditSide(creditAccount.get().getCreditSide().add(amount));
+        } else {
+            if (!debitAccount.isPresent()) {
+                throw new BankAccountNotFoundException("Debit account with number: " + debitAccountNumber.toString() + " not found in database");
+            } else {
+                throw new BankAccountNotFoundException("Credit account with number: " + creditAccountNumber.toString() + " not found in database");
+            }
         }
     }
 

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * Created by dpp on 4/10/17.
  */
-public class BankAccountWrapper {
+public class BankAccountDto {
 
 
     @NotNull
