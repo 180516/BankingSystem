@@ -67,6 +67,9 @@ public class BankAccountEntity implements Serializable {
     @Column (name = "credit")
     private BigDecimal accountCredit;
 
+    @Column (name = "deleted")
+    private boolean deleted = false;
+
     @OneToOne
     @PrimaryKeyJoinColumn
     private CurrencyEntity currency;
@@ -166,5 +169,13 @@ public class BankAccountEntity implements Serializable {
 
     public CurrencyEntity getCurrency() {
         return currency;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
