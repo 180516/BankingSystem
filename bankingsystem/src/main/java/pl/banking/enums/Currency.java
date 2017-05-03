@@ -1,4 +1,4 @@
-package pl.banking.entities;
+package pl.banking.enums;
 
 import java.io.Serializable;
 
