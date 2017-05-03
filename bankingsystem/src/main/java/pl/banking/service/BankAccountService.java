@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.banking.entities.BankAccountEntity;
+import pl.banking.exceptions.AccountBalanceOverdoneException;
 import pl.banking.exceptions.BankAccountNotFoundException;
 import pl.banking.repositories.BankAccountRepository;
 import pl.banking.service.wrappers.BankAccountDto;
@@ -30,41 +31,43 @@ public class BankAccountService {
 
     public void openBankAccount (BankAccountDto bankAccountWrapper) {
         BankAccountEntity bankAccountEntity = new BankAccountEntity();
-
+        bankAccountWrapper.applyToEntity(bankAccountEntity);
     }
 
-    public void editBankAccountDeatils (BankAccountDto bankAccountWrapper, BigInteger accountNumber) {
+    public void editBankAccountDeatils (BankAccountDto bankAccountWrapper, BigInteger accountNumber) throws BankAccountNotFoundException {
         Optional<BankAccountEntity> bankAccountEntity = bankAccountRepository.findByAccountNumber(accountNumber);
         if (bankAccountEntity.isPresent()) {
         } else {
-            //TODO throw new exception
+            throw new BankAccountNotFoundException("Account with number "+ accountNumber.toString() + " not found ");
         }
     }
 
-    public void suspendBankAccount (BigInteger accountNumber, LocalDateTime suspensionDate) {
+    public void suspendBankAccount (BigInteger accountNumber, LocalDateTime suspensionDate) throws BankAccountNotFoundException {
         Optional<BankAccountEntity> bankAccountEntity = bankAccountRepository.findByAccountNumber(accountNumber);
         if (bankAccountEntity.isPresent()) {
             bankAccountEntity.get().setSuspendDate(suspensionDate);
         } else {
-            //TODO throw new exception
+            throw new BankAccountNotFoundException("Account with number "+ accountNumber.toString() + " not found ");
         }
     }
 
-    public void deleteBankAccount (BigInteger accountNumber) {
+    public void deleteBankAccount (BigInteger accountNumber) throws BankAccountNotFoundException {
         Optional<BankAccountEntity> bankAccountEntity = bankAccountRepository.findByAccountNumber(accountNumber);
         if (bankAccountEntity.isPresent()) {
-            //TODO: setup entity to have boolean field with active or deleted
+            if (!bankAccountEntity.get().isDeleted()) {
+                bankAccountEntity.get().setDeleted(true);
+            }
         } else {
-            //TODO throw new exception
+            throw new BankAccountNotFoundException("Account with number "+ accountNumber.toString() + " not found ");
         }
     }
 
-    public void changeBalance (BigInteger accountNumber, BigDecimal amount) throws BankAccountNotFoundException{
+    public void changeBalance (BigInteger accountNumber, BigDecimal amount) throws BankAccountNotFoundException, AccountBalanceOverdoneException {
         Optional<BankAccountEntity> bankAccountEntity = bankAccountRepository.findByAccountNumber(accountNumber);
         if (bankAccountEntity.isPresent()) {
 
             if (Math.signum(amount.doubleValue()) == -1.0 && Math.abs(bankAccountEntity.get().getAccountBalance().doubleValue() - amount.doubleValue()) < 0) {
-                //TODO: throw exception about getting TOO much from account and get it
+                throw new AccountBalanceOverdoneException ("Cannot take that much money from this account");
             }
 
             bankAccountEntity.get().setAccountBalance(amount);
@@ -88,5 +91,4 @@ public class BankAccountService {
             }
         }
     }
-
 }

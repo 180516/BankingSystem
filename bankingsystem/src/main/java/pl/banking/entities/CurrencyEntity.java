@@ -2,6 +2,8 @@ package pl.banking.entities;
 
 import javax.persistence.*;
 
+import pl.banking.enums.Currency;
+
 /**
  * Created by dpp on 4/1/17.
  */
