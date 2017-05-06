@@ -15,6 +15,7 @@ import pl.banking.entities.ClientEntity;
 import pl.banking.entities.ClientStatusEntity;
 import pl.banking.entities.ClientTypeEntity;
 import pl.banking.entities.CreditCategoryEntity;
+import pl.banking.entities.InvestmentEntity;
 import pl.banking.entities.NationalityEntity;
 import pl.banking.entities.PrivilegeCategoryEntity;
 import pl.banking.enums.Activities;
@@ -24,7 +25,9 @@ import pl.banking.enums.ClientTypes;
 import pl.banking.enums.CreditCategories;
 import pl.banking.enums.Nationalities;
 import pl.banking.enums.PrivilegeCategories;
+import pl.banking.repositories.ActivityRepository;
 import pl.banking.repositories.ClientRepository;
+import pl.banking.repositories.InvestmentRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,6 +39,12 @@ public class ClientTests {
     
     @Autowired
     private ClientRepository clientRepo;
+    
+    @Autowired
+    private ActivityRepository activityRepo;
+    
+    @Autowired
+    private InvestmentRepository invRepo;
 
     @Test
     public void testClientCreationAndSaving() {

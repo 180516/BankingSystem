@@ -22,7 +22,7 @@ public class NationalityEntity {
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "nationality_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "nationality_type", nullable = false, updatable = false)
     private Nationalities nationalityType;
     
     @OneToOne(mappedBy = "nationality")
@@ -32,8 +32,6 @@ public class NationalityEntity {
     public NationalityEntity(){
         
     }
-    
-    
 
     public NationalityEntity(Long id, Nationalities nationalityType, ClientEntity clientEntity) {
         super();
@@ -41,8 +39,6 @@ public class NationalityEntity {
         this.nationalityType = nationalityType;
         this.clientEntity = clientEntity;
     }
-
-
 
     public Long getId() {
         return id;
@@ -55,6 +51,4 @@ public class NationalityEntity {
     public ClientEntity getClientEntity() {
         return clientEntity;
     }
-    
-    
 }

@@ -23,7 +23,7 @@ public class ClientTypeEntity {
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "client_type_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "client_type_type", nullable = false, updatable = false)
     private ClientTypes clientTypeType;
     
     @OneToOne(mappedBy = "clientType")

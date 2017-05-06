@@ -25,7 +25,7 @@ public class BillCapitalizationEntity implements Serializable{
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "bill_capitalization_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "bill_capitalization_type", nullable = false, updatable = false)
     private BillCapitalizations billCapitalizationType;
     
     @OneToOne(mappedBy = "billCapitalization")
@@ -42,8 +42,6 @@ public class BillCapitalizationEntity implements Serializable{
         this.billCapitalizationType = billCapitalizationType;
         this.clientEntity = clientEntity;
     }
-
-
 
     public Long getId() {
         return id;

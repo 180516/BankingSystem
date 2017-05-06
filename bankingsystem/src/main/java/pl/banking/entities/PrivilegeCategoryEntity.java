@@ -22,7 +22,7 @@ public class PrivilegeCategoryEntity {
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "privilege_category_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "privilege_category_type", nullable = false, updatable = false)
     private PrivilegeCategories privilegeCategoryType;
     
     @OneToOne(mappedBy = "privilegeCategory")
@@ -31,8 +31,6 @@ public class PrivilegeCategoryEntity {
 
     public PrivilegeCategoryEntity() {
     }
-    
-    
 
     public PrivilegeCategoryEntity(Long id, PrivilegeCategories privilegeCategoryType, ClientEntity clientEntity) {
         super();
@@ -40,8 +38,6 @@ public class PrivilegeCategoryEntity {
         this.privilegeCategoryType = privilegeCategoryType;
         this.clientEntity = clientEntity;
     }
-
-
 
     public Long getId() {
         return id;

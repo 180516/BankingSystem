@@ -22,7 +22,7 @@ public class CreditCategoryEntity {
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "credit_category_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "credit_category_type", updatable = false)
     private CreditCategories creditCategoryType;
     
     @OneToOne(mappedBy = "creditCategory")
@@ -32,8 +32,6 @@ public class CreditCategoryEntity {
     public CreditCategoryEntity(){
         
     }
-    
-    
 
     public CreditCategoryEntity(Long id, CreditCategories creditCategoryType, ClientEntity clientEntity) {
         super();
@@ -41,8 +39,6 @@ public class CreditCategoryEntity {
         this.creditCategoryType = creditCategoryType;
         this.clientEntity = clientEntity;
     }
-
-
 
     public Long getId() {
         return id;
