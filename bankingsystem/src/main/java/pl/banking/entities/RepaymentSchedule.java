@@ -67,4 +67,104 @@ public class RepaymentSchedule implements Serializable {
 
     @Column (name = "is_repaid")
     private Boolean isRepaid;
+
+    public RepaymentSchedule(){
+
+    }
+
+    public LocalDateTime getRepaymentDate() {
+        return repaymentDate;
+    }
+
+    public void setRepaymentDate(LocalDateTime repaymentDate) {
+        this.repaymentDate = repaymentDate;
+    }
+
+    public BigDecimal getInstallmentNumber() {
+        return installmentNumber;
+    }
+
+    public void setInstallmentNumber(BigDecimal installmentNumber) {
+        this.installmentNumber = installmentNumber;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public BigDecimal getCapitalInstallment() {
+        return capitalInstallment;
+    }
+
+    public void setCapitalInstallment(BigDecimal capitalInstallment) {
+        this.capitalInstallment = capitalInstallment;
+    }
+
+    public BigDecimal getInterestInstallment() {
+        return interestInstallment;
+    }
+
+    public void setInterestInstallment(BigDecimal interestInstallment) {
+        this.interestInstallment = interestInstallment;
+    }
+
+    public BigDecimal getChargeInstallment() {
+        return chargeInstallment;
+    }
+
+    public void setChargeInstallment(BigDecimal chargeInstallment) {
+        this.chargeInstallment = chargeInstallment;
+    }
+
+    public BigDecimal getPenaltyInstallment() {
+        return penaltyInstallment;
+    }
+
+    public void setPenaltyInstallment(BigDecimal penaltyInstallment) {
+        this.penaltyInstallment = penaltyInstallment;
+    }
+
+    public BigDecimal getExcessPayment() {
+        return excessPayment;
+    }
+
+    public void setExcessPayment(BigDecimal excessPayment) {
+        this.excessPayment = excessPayment;
+    }
+
+    public BigDecimal getAdditionalPayment() {
+        return additionalPayment;
+    }
+
+    public void setAdditionalPayment(BigDecimal additionalPayment) {
+        this.additionalPayment = additionalPayment;
+    }
+
+    public BigDecimal getInterest() {
+        return interest;
+    }
+
+    public void setInterest(BigDecimal interest) {
+        this.interest = interest;
+    }
+
+    public BigDecimal getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(BigDecimal paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public Boolean getRepaid() {
+        return isRepaid;
+    }
+
+    public void setRepaid(Boolean repaid) {
+        isRepaid = repaid;
+    }
 }
