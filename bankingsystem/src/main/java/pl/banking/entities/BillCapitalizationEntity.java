@@ -20,38 +20,26 @@ import pl.banking.enums.BillCapitalizations;
 public class BillCapitalizationEntity implements Serializable{
     
     @Id
-    @GeneratedValue
-    @Column(name = "bill_capitalization_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
     @Column(name = "bill_capitalization_type", nullable = false, updatable = false)
     private BillCapitalizations billCapitalizationType;
-    
-    @OneToOne(mappedBy = "billCapitalization")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
     
     public BillCapitalizationEntity(){
         
     }
 
-    public BillCapitalizationEntity(Long id, BillCapitalizations billCapitalizationType, ClientEntity clientEntity) {
+    public BillCapitalizationEntity(BillCapitalizations billCapitalizationType) {
         super();
-        this.id = id;
         this.billCapitalizationType = billCapitalizationType;
-        this.clientEntity = clientEntity;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public BillCapitalizations getBillCapitalizationType() {
         return billCapitalizationType;
     }
 
-    public ClientEntity getClientEntity() {
-        return clientEntity;
+    public void setBillCapitalizationType(BillCapitalizations billCapitalizationType) {
+        this.billCapitalizationType = billCapitalizationType;
     }
+
+    
 }

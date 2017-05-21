@@ -17,38 +17,26 @@ import pl.banking.enums.CreditCategories;
 public class CreditCategoryEntity {
     
     @Id
-    @GeneratedValue
-    @Column(name = "credit_category_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
     @Column(name = "credit_category_type", updatable = false)
     private CreditCategories creditCategoryType;
-    
-    @OneToOne(mappedBy = "creditCategory")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
     
     public CreditCategoryEntity(){
         
     }
 
-    public CreditCategoryEntity(Long id, CreditCategories creditCategoryType, ClientEntity clientEntity) {
+    public CreditCategoryEntity(CreditCategories creditCategoryType) {
         super();
-        this.id = id;
         this.creditCategoryType = creditCategoryType;
-        this.clientEntity = clientEntity;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public CreditCategories getCreditCategoryType() {
         return creditCategoryType;
     }
 
-    public ClientEntity getClientEntity() {
-        return clientEntity;
+    public void setCreditCategoryType(CreditCategories creditCategoryType) {
+        this.creditCategoryType = creditCategoryType;
     }
+    
+    
 }

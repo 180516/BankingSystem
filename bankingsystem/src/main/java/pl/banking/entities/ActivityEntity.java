@@ -16,50 +16,29 @@ import pl.banking.enums.Activities;
 
 @Entity(name = "activity")
 @Table(name = "activities")
-@SequenceGenerator(name = "activity_gen", sequenceName = "activity_gen", allocationSize = 1)
 public class ActivityEntity {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "activity_gen")
-    @Column(name = "activity_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
     @Column(name = "activityType", nullable = false, updatable = false)
     private Activities activityType;
     
-    @OneToOne(mappedBy = "activity")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
-    
     public ActivityEntity(){
         
     }
-    
-    public ActivityEntity(Long id, Activities activityType, ClientEntity clientEntity) {
-        super();
-        this.id = id;
-        this.activityType = activityType;
-        this.clientEntity = clientEntity;
-    }
 
-    public ActivityEntity(Activities activityType, ClientEntity clientEntity) {
+    public ActivityEntity(Activities activityType) {
         super();
         this.activityType = activityType;
-        this.clientEntity = clientEntity;
-    }
-    
-    
-
-    public Long getId() {
-        return id;
     }
 
     public Activities getActivityType() {
         return activityType;
     }
-    
-    public ClientEntity getClientEntity(){
-        return clientEntity;
+
+    public void setActivityType(Activities activityType) {
+        this.activityType = activityType;
     }
+    
+    
 }

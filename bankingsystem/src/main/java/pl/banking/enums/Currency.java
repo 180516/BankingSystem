@@ -20,5 +20,4 @@ public enum Currency implements Serializable {
     Currency(String currencyName) {
         this.currencyName = currencyName;
     }
-
 }
