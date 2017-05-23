@@ -1,0 +1,12 @@
+.competitor-select {
+    width: 70%;
+}
+
+.competitor-select > select {
+    width: 100% !important;
+}
+
+.competitor-button {
+    width: 25%;
+}
+
