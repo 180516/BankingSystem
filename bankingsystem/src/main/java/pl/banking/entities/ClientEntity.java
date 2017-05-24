@@ -24,7 +24,7 @@ public class ClientEntity implements Serializable{
     @Column (name = "client_id", nullable = false, updatable = false)
     private Long id;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private ClientTypeEntity clientType;
     
@@ -80,19 +80,19 @@ public class ClientEntity implements Serializable{
     @Column(name = "company_open_date")
     private LocalDateTime companyOpenDate;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private NationalityEntity nationality;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private ActivityEntity activity;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private CreditCategoryEntity creditCategory;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private PrivilegeCategoryEntity privilegeCategory;
     
@@ -100,11 +100,11 @@ public class ClientEntity implements Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime lastConcactDate;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private ClientStatusEntity clientStatus;
     
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private BillCapitalizationEntity billCapitalization;
 
