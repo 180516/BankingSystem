@@ -18,35 +18,17 @@ import pl.banking.enums.ClientTypes;
 public class ClientTypeEntity {
     
     @Id
-    @GeneratedValue
-    @Column(name = "client_type_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
-    @Column(name = "client_type_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "client_type_type", nullable = false, updatable = false)
     private ClientTypes clientTypeType;
-    
-    @OneToOne(mappedBy = "clientType")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
 
     public ClientTypeEntity() {
         super();
     }
 
-    public ClientTypeEntity(Long id, ClientTypes clientTypeType, ClientEntity clientEntity) {
+    public ClientTypeEntity(ClientTypes clientTypeType) {
         super();
-        this.id = id;
         this.clientTypeType = clientTypeType;
-        this.clientEntity = clientEntity;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public ClientTypes getClientTypeType() {
@@ -57,13 +39,5 @@ public class ClientTypeEntity {
         this.clientTypeType = clientTypeType;
     }
 
-    public ClientEntity getClientEntity() {
-        return clientEntity;
-    }
-
-    public void setClientEntity(ClientEntity clientEntity) {
-        this.clientEntity = clientEntity;
-    }
-    
     
 }

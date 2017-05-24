@@ -17,43 +17,25 @@ import pl.banking.enums.Nationalities;
 public class NationalityEntity {
     
     @Id
-    @GeneratedValue
-    @Column(name = "nationality_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
-    @Column(name = "nationality_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "nationality_type", nullable = false, updatable = false)
     private Nationalities nationalityType;
-    
-    @OneToOne(mappedBy = "nationality")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
     
     public NationalityEntity(){
         
     }
-    
-    
 
-    public NationalityEntity(Long id, Nationalities nationalityType, ClientEntity clientEntity) {
+    public NationalityEntity(Nationalities nationalityType) {
         super();
-        this.id = id;
         this.nationalityType = nationalityType;
-        this.clientEntity = clientEntity;
-    }
-
-
-
-    public Long getId() {
-        return id;
     }
 
     public Nationalities getNationalityType() {
         return nationalityType;
     }
 
-    public ClientEntity getClientEntity() {
-        return clientEntity;
+    public void setNationalityType(Nationalities nationalityType) {
+        this.nationalityType = nationalityType;
     }
     
     

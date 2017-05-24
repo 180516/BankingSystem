@@ -17,41 +17,25 @@ import pl.banking.enums.PrivilegeCategories;
 public class PrivilegeCategoryEntity {
     
     @Id
-    @GeneratedValue
-    @Column(name = "privilege_category_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
-    @Column(name = "privilege_category_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "privilege_category_type", nullable = false, updatable = false)
     private PrivilegeCategories privilegeCategoryType;
-    
-    @OneToOne(mappedBy = "privilegeCategory")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
 
     public PrivilegeCategoryEntity() {
     }
-    
-    
 
-    public PrivilegeCategoryEntity(Long id, PrivilegeCategories privilegeCategoryType, ClientEntity clientEntity) {
+    public PrivilegeCategoryEntity(PrivilegeCategories privilegeCategoryType) {
         super();
-        this.id = id;
         this.privilegeCategoryType = privilegeCategoryType;
-        this.clientEntity = clientEntity;
-    }
-
-
-
-    public Long getId() {
-        return id;
     }
 
     public PrivilegeCategories getPrivilegeCategoryType() {
         return privilegeCategoryType;
     }
 
-    public ClientEntity getClientEntity() {
-        return clientEntity;
+    public void setPrivilegeCategoryType(PrivilegeCategories privilegeCategoryType) {
+        this.privilegeCategoryType = privilegeCategoryType;
     }
+    
+    
 }

@@ -17,38 +17,26 @@ import pl.banking.enums.ClientStatuses;
 public class ClientStatusEntity {
     
     @Id
-    @GeneratedValue
-    @Column(name = "client_status_id", nullable = false, updatable = false)
-    private Long id;
-    
     @Enumerated(EnumType.STRING)
-    @Column(name = "client_status_type", nullable = false, insertable = false, updatable = false)
+    @Column(name = "client_status_type", nullable = false, updatable = false)
     private ClientStatuses clientStatusType;
-    
-    @OneToOne(mappedBy = "clientStatus")
-    @PrimaryKeyJoinColumn
-    private ClientEntity clientEntity;
     
     public ClientStatusEntity(){
         
     }
 
-    public ClientStatusEntity(Long id, ClientStatuses clientStatusType, ClientEntity clientEntity) {
+    public ClientStatusEntity(ClientStatuses clientStatusType) {
         super();
-        this.id = id;
         this.clientStatusType = clientStatusType;
-        this.clientEntity = clientEntity;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public ClientStatuses getClientStatusType() {
         return clientStatusType;
     }
 
-    public ClientEntity getClientEntity() {
-        return clientEntity;
+    public void setClientStatusType(ClientStatuses clientStatusType) {
+        this.clientStatusType = clientStatusType;
     }
+
+    
 }

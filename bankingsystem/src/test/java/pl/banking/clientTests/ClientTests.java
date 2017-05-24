@@ -25,6 +25,7 @@ import pl.banking.enums.CreditCategories;
 import pl.banking.enums.Nationalities;
 import pl.banking.enums.PrivilegeCategories;
 import pl.banking.repositories.ClientRepository;
+import pl.banking.repositories.InvestmentRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,6 +37,9 @@ public class ClientTests {
     
     @Autowired
     private ClientRepository clientRepo;
+    
+    @Autowired
+    private InvestmentRepository invRepo;
 
     @Test
     public void testClientCreationAndSaving() {
@@ -53,13 +57,13 @@ public class ClientTests {
         ClientEntity client = new ClientEntity();
 
         //Tutaj blok klas encji (walić długość linii)
-        ActivityEntity activity                     = new ActivityEntity          (DEFAULT_ID, Activities.SOME_ACTIVITY, client);
-        BillCapitalizationEntity billCapitalization = new BillCapitalizationEntity(DEFAULT_ID, BillCapitalizations.SOME_CAP, client);
-        ClientStatusEntity clientStatus             = new ClientStatusEntity      (DEFAULT_ID, ClientStatuses.SOME_STATUS, client);
-        ClientTypeEntity clientType                 = new ClientTypeEntity        (DEFAULT_ID, ClientTypes.SOME_TYPE, client);
-        CreditCategoryEntity creditCategory         = new CreditCategoryEntity    (DEFAULT_ID, CreditCategories.SOME_CATEGORY, client);
-        NationalityEntity nationality               = new NationalityEntity       (DEFAULT_ID, Nationalities.UZBEKISTANI, client);
-        PrivilegeCategoryEntity privilegeCategory   = new PrivilegeCategoryEntity (DEFAULT_ID, PrivilegeCategories.SOME_CATEGORY, client);
+        ActivityEntity activity                     = new ActivityEntity          (Activities.SOME_ACTIVITY);
+        BillCapitalizationEntity billCapitalization = new BillCapitalizationEntity(BillCapitalizations.SOME_CAP);
+        ClientStatusEntity clientStatus             = new ClientStatusEntity      (ClientStatuses.SOME_STATUS);
+        ClientTypeEntity clientType                 = new ClientTypeEntity        (ClientTypes.SOME_TYPE);
+        CreditCategoryEntity creditCategory         = new CreditCategoryEntity    (CreditCategories.SOME_CATEGORY);
+        NationalityEntity nationality               = new NationalityEntity       (Nationalities.UZBEKISTANI);
+        PrivilegeCategoryEntity privilegeCategory   = new PrivilegeCategoryEntity (PrivilegeCategories.SOME_CATEGORY);
         
 
         //Tutaj dodaję klasy encji do klienta
@@ -106,13 +110,13 @@ public class ClientTests {
         NationalityEntity nationality               = client.getNationality();
         PrivilegeCategoryEntity privilegeCategory   = client.getPrivilegeCategory();
         
-        activity = new ActivityEntity(activity.getId(), activity.getActivityType(), clone);
-        billCapitalization = new BillCapitalizationEntity(billCapitalization.getId(), billCapitalization.getBillCapitalizationType(), clone);
-        clientStatus = new ClientStatusEntity(clientStatus.getId(), clientStatus.getClientStatusType(), clone);
-        clientType = new ClientTypeEntity(clientType.getId(), clientType.getClientTypeType(), clone);
-        creditCategory = new CreditCategoryEntity(creditCategory.getId(), creditCategory.getCreditCategoryType(), clone);
-        nationality = new NationalityEntity(nationality.getId(), nationality.getNationalityType(), clone);
-        privilegeCategory = new PrivilegeCategoryEntity (privilegeCategory.getId(), privilegeCategory.getPrivilegeCategoryType(), clone);
+        activity = new ActivityEntity(activity.getActivityType());
+        billCapitalization = new BillCapitalizationEntity(billCapitalization.getBillCapitalizationType());
+        clientStatus = new ClientStatusEntity(clientStatus.getClientStatusType());
+        clientType = new ClientTypeEntity(clientType.getClientTypeType());
+        creditCategory = new CreditCategoryEntity(creditCategory.getCreditCategoryType());
+        nationality = new NationalityEntity(nationality.getNationalityType());
+        privilegeCategory = new PrivilegeCategoryEntity (privilegeCategory.getPrivilegeCategoryType());
         
         clone.setActivity(activity);
         clone.setBillCapitalization(billCapitalization);
