@@ -5,7 +5,6 @@ import pl.banking.entities.BankAccountEntity;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 
@@ -31,7 +30,7 @@ public class BankAccountDto {
 
     private BigDecimal accountPercentage;
 
-    private BigInteger accountNumber;
+    private String accountNumber;
 
     private BigDecimal accountCapitalization;
 

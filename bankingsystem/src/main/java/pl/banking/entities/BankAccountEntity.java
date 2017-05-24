@@ -3,9 +3,9 @@ package pl.banking.entities;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 /**
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 @Entity (name = "bank_account")
 @Table (name="BANK_ACCOUNTS")
-@SequenceGenerator (name = "bank_account_gen", sequenceName = "bank_account_gen", allocationSize = 1)
+@SequenceGenerator (name = "bank_account_gen", sequenceName = "bank_account_seq", allocationSize = 1)
 public class BankAccountEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,9 +47,9 @@ public class BankAccountEntity implements Serializable {
     private BigDecimal accountPercentage;
 
     @NotNull
-    @Digits (integer = 30, fraction = 0)
+    @Pattern(regexp = "[A-Z]{2}\\d{26}")
     @Column (name = "account_number", updatable = false)
-    private BigInteger accountNumber;
+    private String accountNumber;
 
     @Digits (integer = 24, fraction = 2)
     @Column (name = "capitalization")
@@ -127,11 +127,11 @@ public class BankAccountEntity implements Serializable {
         this.accountPercentage = accountPercentage;
     }
 
-    public BigInteger getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(BigInteger accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
